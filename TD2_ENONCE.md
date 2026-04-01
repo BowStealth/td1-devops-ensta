@@ -369,7 +369,7 @@ FLAG=3
 **7.4.** Scannez (avec `find -f` les fichiers qui pourraient être intéressants pour un acteur malveillant : `.env`, par exemple)
 Vous pouvez aussi scanner tous les fichiers du systeme, et filtrer avec `grep` des choses comme `API_KEY` et l'extraire
 
-> **Valeur de l'`API_KEY` trouvée :**
+> **Valeur de l'`API_KEY` trouvée : API_KEY=9q8O16xcDI1CCGoO2y29**
 
 **7.5.** (Bonus) Pouvez-vous obtenir un shell root sur l'hôte ? Prouvez le en créant un fichier `PWNED_BY_prenom.txt` sur le `/home` de l'utilisateur`adminensta`
 
