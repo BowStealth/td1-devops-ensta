@@ -94,11 +94,11 @@ Utilisez un volume pour voir les modifications en temps réel sans rebuild.
 
 - Pourquoi le changement est-il visible sans rebuild ?
 
-  > **Réponse :**
+  > **Réponse : grace a la commande -v on lie notre fichier avec le ./app du conteneur ce qui modifie son image**
 
 - Si vous ajoutez une nouvelle dépendance dans `requirements.txt`, est-ce que le volume suffit ? Pourquoi ?
 
-  > **Réponse :**
+  > **Réponse :Non car cela ne relance pas automatiquement le build donc on refait pas le pip install des librairies nécéssaire**
 
 ### ✅ Checkpoint
 
@@ -155,15 +155,15 @@ docker compose exec <service> <commande>
 
 - Pourquoi utilisez-vous `redis` comme hostname et pas `localhost` ?
 
-  > **Réponse :**
+  > **Réponse :Ca permet de creer un allias de l adresse et donc de communiquer plus simplement entre service**
 
 - Que fait `depends_on` ? Est-ce suffisant pour garantir que Redis est prêt ?
 
-  > **Réponse :**
+  > **Réponse :Il fait demarrer en premier redis. Non car il ne verifie pas son etat de lancement**
 
 - Comment vérifiez-vous que Redis répond depuis l'intérieur du container app ?
 
-  > **Commande utilisée :**
+  > **Commande utilisée :docker compose exec redis sh**
 
 ### ✅ Checkpoint
 
