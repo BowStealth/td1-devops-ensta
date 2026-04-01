@@ -55,15 +55,15 @@ Voici les instructions dont vous aurez besoin (pas forcément dans cet ordre) :
 
 - Que se passe-t-il si vous modifiez `app.py` ? Pourquoi ?
 
-  > **Réponse :**
+  > **Réponse :  rien car le conteneur est deja lance**
 
 - Comment arrêtez-vous le container ?
 
-  > **Commande utilisée :**
+  > **Commande utilisée : CLTR +C dans le terminal courant**
 
 - Quelle commande permet de voir les containers en cours d'exécution ?
 
-  > **Commande :**
+  > **Commande :docker ps**
 
 ### ✅ Checkpoint
 
