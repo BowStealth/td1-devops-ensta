@@ -107,13 +107,15 @@ az acr repository show-tags --name enstartupregistry --repository enstartup
 
 **Q1 — Quelle est la différence entre Docker Hub et ACR ?**
 
-> _Votre réponse :_
+Hub est public et destiné pour partager des images à tout le monde
+ACR est privé et plutot destiné aux entreprises pour ce partager des images
 
 ---
 
 **Q2 — Pourquoi utiliser un registry privé en entreprise ?**
 
-> _Votre réponse :_
+Pour sécuriser les images et gérer les accès.
+Ca permet aussi de gérer la pipeline ainsi que les différentes versions.
 
 ---
 
@@ -159,11 +161,11 @@ az containerapp create \
   --name enstartup-app \
   --resource-group rg-enstartup \
   --environment enstartup-env \
-  --image enstartupregistry.azurecr.io/enstartup:v1 \
+  --image enstartupregistry1.azurecr.io/enstartup:v1 \
   --target-port 8501 \
   --ingress external \
-  --registry-server enstartupregistry.azurecr.io \
-  --registry-username enstartupregistry \
+  --registry-server enstartupregistry1.azurecr.io \
+  --registry-username enstartupregistry1 \
   --registry-password $ACR_PASSWORD \
   --cpu 0.5 \
   --memory 1.0Gi
@@ -181,19 +183,19 @@ az containerapp show --name enstartup-app --resource-group rg-enstartup --query 
 
 **Q3 — Quelle est la différence entre Container Apps et une VM classique ?**
 
-> _Votre réponse :_
+Container Apps permet d’exécuter des applications sans gérer les serveurs. VM nécessite une gestion manuelle et reste toujours active.
 
 ---
 
 **Q4 — Que signifie "serverless" ?**
 
-> _Votre réponse :_
+Serverless signifie que les serveurs sont gérés automatiquement par le cloud et que l’on paie uniquement ce que l’on utilise.
 
 ---
 
 **Q5 — Combien de replicas tournent par défaut ?**
 
-> _Votre réponse :_
+Par défaut, il y a un replica qui peut descendre à zéro si rien n'est utilisé.
 
 ---
 
@@ -231,19 +233,19 @@ az containerapp update \
 
 **Q6 — Où sont stockées ces variables dans Azure ?**
 
-> _Votre réponse :_
+Elles sont stockés dans les donées de configuration de l'app d'azur.
 
 ---
 
 **Q7 — Sont-elles visibles en clair quelque part ?**
 
-> _Votre réponse :_
+Les variables d’environnement peuvent être visibles en clair dans la configuration ou les logs si elles ne sont pas sécurisées.
 
 ---
 
 **Q8 — En production, comment protégeriez-vous des valeurs sensibles (clés API, mots de passe) ?**
 
-> _Votre réponse :_
+En production, il faut utiliser un service sécurisé pour les stocker.
 
 ---
 
@@ -295,7 +297,7 @@ class ENStartupUser(HttpUser):
 
 ```bash
 pip install locust
-locust -f locustfile.py --host=https://<VOTRE-URL>
+locust -f locustfile.py --host=https://enstartup-app.happyrock-d4f570f2.germanywestcentral.azurecontainerapps.io/
 ```
 
 **4.4.** Ouvrez http://localhost:8089, configurez 50-100 utilisateurs, et lancez le test.
